@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taxi Driver - Trivia</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+
+<body>
+
+  <script src="aviso.js"></script>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Taxi Driver</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="elenco.html">Elenco</a></li>
+            <li class="nav-item"><a class="nav-link" href="analisis.html">Analisis</a></li>
+            <li class="nav-item"><a class="nav-link" href="galeria.html">Galeria</a></li>
+            <li class="nav-item"><a class="nav-link" href="trivia.html">Trivia</a></li>
+            <li class="nav-item"><a class="nav-link" href="sobremi.html">Sobre mi</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="trivia" id="arriba">
+    <h1>Trivia</h1>
+    <!-- relleno: el espacio a los costados va en este div, asi el titulo de arriba toca los bordes -->
+    <div class="relleno">
+      <p class="trivia-intro">10 preguntas sobre datos curiosos de Taxi Driver. Elegi una respuesta en cada una y al final mira tu nota.</p>
+
+      <!-- las preguntas se crean con JavaScript (trivia.js) a partir de una lista -->
+      <div id="preguntas"></div>
+
+      <!-- resultado: arranca oculto y aparece al corregir -->
+      <div class="resultado" id="resultado">
+        <h2 id="nota"></h2>
+        <p id="mensaje-nota"></p>
+      </div>
+
+      <div class="trivia-botones">
+        <button id="boton-corregir" onclick="corregir()">Ver resultado</button>
+        <button id="boton-reintentar" onclick="reintentar()">Volver a intentar</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Taxi Driver, sus personajes e imagenes pertenecen a sus respectivos autores y titulares de derechos. Este sitio no tiene vinculo oficial con ellos. Si sos titular y queres que retiremos algun material, escribinos a Santiagocid2307@gmail.com</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="trivia.js"></script>
+
+</body>
+</html>

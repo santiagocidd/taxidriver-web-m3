@@ -1,0 +1,980 @@
+@font-face {
+  font-family: 'HeadingNow';
+  src: url('fonts/headingnow06.ttf');
+}
+
+@font-face {
+  font-family: 'Typewriter';
+  src: url('fonts/typewriter.ttf');
+}
+
+body {
+  font-family: 'Typewriter', monospace;
+  background-color: #000000;
+  color: #ffffff;
+  line-height: 1.3;
+  margin: 0 12px;
+}
+
+h1, h2, h3 {
+  font-family: 'HeadingNow', sans-serif;
+}
+
+/* relleno: espacio a los costados del contenido de una seccion.
+   Las secciones no tienen padding a los costados, asi sus titulos llegan solos hasta
+   las barras negras verticales; el espacio para el texto lo pone este div */
+.relleno {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+header {
+  background-color: #000000;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 10px solid #f5b921;
+}
+
+/* barra de navegacion de Bootstrap con los colores del sitio */
+
+.navbar-brand {
+  font-family: 'HeadingNow', sans-serif;
+  color: #f5b921;
+  font-size: 72px;
+  line-height: 1;
+  padding: 0;
+}
+
+.navbar-brand:hover {
+  color: #ffffff;
+}
+
+.nav-link {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #ffffff;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #f5b921;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.portada {
+  position: relative;
+}
+
+/* el marco recorta la imagen cuando se agranda */
+.marco-inicio {
+  overflow: hidden;
+  border-bottom: 10px solid #000000;
+}
+
+.portada img {
+  width: 100%;
+  display: block;
+}
+
+/* animacion infinita de la imagen de inicio */
+.imagen-inicio {
+  animation: zoomLento 15s ease-in-out infinite alternate;
+}
+
+@keyframes zoomLento {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.15);
+  }
+}
+
+/* z-index mantiene el titulo por encima de la imagen animada */
+.portada h1 {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #f5b921;
+  font-size: 23vw;
+  margin: 40px 0 0 0;
+}
+
+/* margen a los costados: deja ver el negro del body como barras verticales, igual que en analisis */
+.portada,
+.sinopsis,
+.trailer,
+.rating {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.sinopsis {
+  background-color: #f5b921;
+  /* solo padding abajo: arriba la barra del titulo arranca pegada al borde,
+     y a los costados el espacio lo pone el div .relleno */
+  padding: 0 0 10px 0;
+}
+
+.sinopsis .relleno {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* mismo titulo que rating: barra amarilla oscura que toca las barras verticales */
+.sinopsis h2 {
+  font-family: 'Typewriter', monospace;
+  color: #ffffff;
+  background-color: #A37B01;
+  text-align: center;
+  font-size: 50px;
+  padding: 25px 15px;
+  margin: 0 0 20px 0;
+}
+
+.sinopsis img {
+  border: 5px solid #000000;
+}
+
+.sinopsis p {
+  font-size: 25px;
+  margin: 20px 50px;
+  color: #000000;
+}
+
+.elenco {
+  position: relative;
+  background-color: #333333;
+  padding: 0 0 20px 0;
+}
+
+.elenco h2 {
+  font-family: 'Typewriter', monospace;
+  color: #ffffff;
+  text-align: center;
+  font-size: 50px;
+  background-color: #000000;
+  padding: 20px;
+  margin: 0 0 20px 0;
+  border-top: 5px solid #000000;
+}
+
+.persona {
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.persona p {
+  color: #f5b921;
+  margin: 0 0 5px 0;
+  font-size: 30px;
+}
+
+.actores .persona p {
+  min-height: 110px;
+}
+
+/* el marco recorta la foto cuando se agranda */
+.marco-foto {
+  overflow: hidden;
+  border: 2px solid #f5b921;
+  margin-top: auto;
+}
+
+/* misma proporcion para todas: recorta lo que sobra sin deformar la foto */
+.foto-elenco {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  object-position: center 20%;
+  /* arrancan en blanco y negro */
+  filter: grayscale(100%);
+  transition: transform 0.5s, filter 0.5s;
+}
+
+/* esta foto es apaisada: el recorte se corre para mostrar la cara */
+.foto-harris {
+  object-position: 30% center;
+}
+
+/* al pasar el mouse se agrandan y aparece el color */
+.persona:hover .foto-elenco {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+}
+
+.persona:hover .marco-foto {
+  border-color: #ffffff;
+}
+
+/* ficha que se abre al hacer clic en una persona */
+
+.fondo {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 15;
+}
+
+.ficha {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 15%;
+  width: 70%;
+  padding: 20px;
+  background-color: #000000;
+  color: #ffffff;
+  border: 3px solid #555555;
+  font-family: 'Typewriter', monospace;
+  z-index: 20;
+}
+
+.ficha-fotos {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 20px 0;
+}
+
+.ficha-fotos img {
+  width: 48%;
+  margin: 0 1%;
+  border: 2px solid #555555;
+  object-fit: cover;
+}
+
+.ficha h4 {
+  font-size: 24px;
+  margin: 5px 0 20px 0;
+}
+
+.ficha p {
+  font-size: 20px;
+  margin: 0 0 15px 0;
+}
+
+.cerrar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #f5b921;
+  color: #000000;
+  border: none;
+  font-family: 'Typewriter', monospace;
+  font-size: 22px;
+  padding: 5px 12px;
+}
+
+.trailer {
+  background-color: #000000;
+  padding: 20px 0 40px 0;
+}
+
+/* barra negra detras del titulo, como en analisis */
+.trailer h2 {
+  font-family: 'Typewriter', monospace;
+  color: #ffffff;
+  background-color: #000000;
+  text-align: center;
+  font-size: 50px;
+  padding: 25px 15px;
+  margin: 0 0 20px 0;
+}
+
+.trailer .ratio {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.rating {
+  background-color: #f5b921;
+  /* solo padding abajo: 45px + los 30px de margen del ultimo parrafo = 75px, igual que arriba del texto */
+  padding: 0 0 45px 0;
+}
+
+.rating .relleno {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+/* barra amarilla oscura que toca las barras verticales */
+.rating h2 {
+  font-family: 'Typewriter', monospace;
+  color: #ffffff;
+  background-color: #A37B01;
+  text-align: center;
+  font-size: 50px;
+  padding: 25px 15px;
+  /* 75px abajo separa el titulo del texto */
+  margin: 0 0 75px 0;
+}
+
+/* la columna centrada la arma la grilla de Bootstrap en el HTML (row + col-lg-8) */
+.rating p {
+  color: #000000;
+  font-size: 24px;
+  margin: 0 0 30px 0;
+}
+
+.rating a {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.rating a:hover {
+  color: #0645AD;
+}
+
+/* banda sonora: fondo negro y titulo con barra, como el trailer */
+.banda-sonora {
+  background-color: #000000;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20px 0 60px 0;
+}
+
+.banda-sonora h2 {
+  font-family: 'Typewriter', monospace;
+  color: #ffffff;
+  background-color: #000000;
+  text-align: center;
+  font-size: 50px;
+  padding: 25px 15px;
+  margin: 0 0 20px 0;
+}
+
+.banda-sonora img {
+  border: 3px solid #f5b921;
+}
+
+.datos-album {
+  font-size: 20px;
+  text-align: center;
+  margin: 15px 0 0 0;
+}
+
+/* list-style-type: none saca los numeros automaticos de la lista; el padding 0 saca la sangria */
+/* max-height limita el alto de la lista, mas o menos lo que mide la portada.
+   overflow-y: auto agrega una barra de scroll solo dentro de la lista:
+   los temas bajan ahi adentro y la pagina queda quieta */
+.lista-temas {
+  list-style-type: none;
+  padding: 0 15px 0 0;
+  margin: 0;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+/* espacio entre un tema y el siguiente: un renglon libre entre el reproductor
+   de arriba y el titulo del tema que sigue */
+.lista-temas li {
+  margin: 0 0 40px 0;
+}
+
+.lista-temas p {
+  font-size: 18px;
+  color: #f5b921;
+  margin: 0 0 8px 0;
+}
+
+/* display block y width 100% hacen que el reproductor ocupe todo el ancho de la caja */
+/* display block y width 100% hacen que el reproductor ocupe todo el ancho */
+.lista-temas audio {
+  display: block;
+  width: 100%;
+}
+
+footer {
+  background-color: #000000;
+  color: #ffffff;
+  /* mas espacio arriba y abajo del texto */
+  padding: 50px 20px;
+  border-top: 20px solid #222222;
+}
+
+footer h3 {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  margin: 0 0 5px 0;
+}
+
+footer p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* aca termina la pagina de inicio */
+
+  .intro {
+  /* termina en el mismo gris que los bloques, asi no se ve un corte */
+  background: linear-gradient(#71580C, #1a1a1a);
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 10%;
+}
+
+.intro h1 {
+  font-size: 23vw;
+  margin: 0 0 10px 0;
+}
+
+.intro p {
+  font-size: 24px;
+  margin: 0;
+}
+
+/* margen a los costados: deja ver el negro del body como barras verticales, igual que en el inicio */
+.intro,
+.bloque {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.bloque {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  /* sin padding arriba ni a los costados: el titulo arranca pegado arriba y toca las barras negras.
+     30px abajo dejan un poco de aire entre el video y el titulo del bloque siguiente */
+  padding: 0 0 30px 0;
+}
+
+/* margen solo abajo: no queda espacio entre el bloque de arriba y la barra amarilla */
+.bloque h2 {
+  font-family: 'Typewriter', monospace;
+  text-align: center;
+  font-size: 36px;
+  color: #000000;
+  background-color: #f5b921;
+  padding: 25px 15px;
+  margin: 0 0 20px 0;
+}
+
+.texto {
+  height: 100%;
+  background-color: #1a1a1a;
+  padding: 10px;
+}
+
+.texto p {
+  font-size: 28px;
+  margin: 10px 10px 20px 0;
+}
+
+/* aca termina la subpagina de analisis */
+
+.cabecera {
+  position: relative;
+}
+
+.cabecera img {
+  width: 100%;
+  display: block;
+}
+
+/* pointer-events deja que el clic pase a la imagen que esta debajo del titulo */
+.cabecera h1 {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  font-size: 23vw;
+  margin: 60px 0 0 0;}
+
+.galeria {
+  background-color: #000000;
+}
+
+.fila-galeria {
+  display: flex;
+}
+
+/* el enlace recorta la imagen cuando se agranda */
+.foto-galeria {
+  display: block;
+  overflow: hidden;
+}
+
+/* las imagenes arrancan en blanco y negro */
+.foto-galeria img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: transform 0.5s, filter 0.5s;
+}
+
+/* al pasar el mouse se agrandan y aparece el color */
+.foto-galeria:hover img {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+/* ventana que se abre al hacer clic en una imagen */
+.ventana-escena {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 92%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #000000;
+  color: #ffffff;
+  border: 3px solid #555555;
+  z-index: 20;
+}
+
+.ventana-escena img {
+  display: block;
+  width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.ventana-escena p {
+  font-size: 20px;
+  margin: 0;
+}
+
+.w100 { width: 100%; }
+.w65 { width: 65%; }
+.w57 { width: 57%; }
+.w51-2 { width: 51.2%; }
+.w48-8 { width: 48.8%; }
+.w43 { width: 43%; }
+.w35 { width: 35%; }
+
+/* aca termina la subpagina de galeria */
+
+/* mismo amarillo y mismas barras negras a los costados que las secciones del inicio */
+.sobre-mi {
+  background-color: #f5b921;
+  color: #000000;
+  margin: 0 20px;
+  /* sin padding: a los costados el espacio lo pone .relleno, asi las barras de los titulos
+     llegan a los bordes; el espacio de abajo lo pone .contacto */
+  padding: 0;
+}
+
+.sobre-mi .relleno {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+/* barras de los titulos. 70px abajo deja una franja amarilla antes del texto */
+.sobre-mi h1,
+.contacto h2 {
+  color: #ffffff;
+  background-color: #1a1a1a;
+  text-align: center;
+  /* 10px arriba y abajo: la mitad de antes, la barra gris queda mas fina */
+  padding: 10px 20px;
+  margin: 0 0 70px 0;
+}
+
+/* los dos titulos del mismo tamaño y con la tipografia del texto (Typewriter) */
+.sobre-mi h1,
+.contacto h2 {
+  font-family: 'Typewriter', monospace;
+  font-size: 50px;
+}
+
+/* la barra de "Sobre mi" es negra; la de "Contacto" sigue en gris oscuro */
+.sobre-mi h1 {
+  background-color: #000000;
+}
+
+.sobre-mi p {
+  font-size: 24px;
+}
+
+/* separacion entre los dos parrafos de presentacion */
+.presentacion {
+  margin-bottom: 40px;
+}
+
+/* sumado a los 40px del ultimo parrafo, deja 100px de amarillo antes de la barra de contacto */
+.contacto {
+  margin-top: 60px;
+  /* la parte de contacto tiene un amarillo un poco mas claro que el resto de la pagina */
+  background-color: #f8ca55;
+  /* 100px de amarillo claro entre el formulario y el footer */
+  padding-bottom: 100px;
+}
+
+/* links de instagram y mail: iguales que los de rating, cambian de color al pasar el mouse */
+.contacto a {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.contacto a:hover {
+  color: #0645AD;
+}
+
+/* display block hace que cada campo ocupe su propia linea */
+.formulario label {
+  display: block;
+  font-size: 20px;
+  margin: 0 0 5px 0;
+}
+
+.formulario input,
+.formulario textarea {
+  display: block;
+  width: 100%;
+  font-family: 'Typewriter', monospace;
+  font-size: 18px;
+  padding: 10px;
+  margin: 0 0 20px 0;
+  color: #ffffff;
+  background-color: #000000;
+  border: 2px solid #555555;
+}
+
+/* el borde se pone blanco en el campo donde se esta escribiendo */
+.formulario input:focus,
+.formulario textarea:focus {
+  outline: none;
+  border-color: #ffffff;
+}
+
+/* boton negro para que se vea sobre el fondo amarillo */
+.formulario button {
+  font-family: 'Typewriter', monospace;
+  font-size: 20px;
+  padding: 10px 30px;
+  color: #f5b921;
+  background-color: #000000;
+  border: none;
+}
+
+/* carteles de error y de gracias: arrancan ocultos y JavaScript los muestra al enviar */
+.aviso-form {
+  display: none;
+  margin: 20px 0 0 0;
+  padding: 15px 20px;
+  font-size: 20px;
+  color: #f5b921;
+  background-color: #1a1a1a;
+  border: 2px solid #555555;
+}
+
+.formulario button:hover {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+/* aca termina la subpagina de sobre mi */
+
+/* subpagina de trivia: mismo gris y barras negras a los costados que analisis */
+.trivia {
+  background-color: #1a1a1a;
+  margin: 0 20px;
+  /* solo padding abajo: a los costados el espacio lo pone .relleno */
+  padding: 0 0 60px 0;
+}
+
+/* barra negra con letra amarilla en el titulo */
+.trivia h1 {
+  font-family: 'Typewriter', monospace;
+  text-align: center;
+  font-size: 60px;
+  color: #f5b921;
+  background-color: #000000;
+  padding: 20px 15px;
+  margin: 0 0 30px 0;
+}
+
+.trivia-intro {
+  font-size: 22px;
+  text-align: center;
+  margin: 0 0 30px 0;
+}
+
+/* cada pregunta es una caja negra con borde gris */
+.pregunta {
+  background-color: #000000;
+  border: 3px solid #555555;
+  padding: 20px;
+  margin: 0 0 20px 0;
+}
+
+.pregunta h3 {
+  font-family: 'Typewriter', monospace;
+  font-size: 24px;
+  color: #f5b921;
+  margin: 0 0 15px 0;
+}
+
+/* flex pone el circulo y el texto como dos columnas: si el texto ocupa
+   varios renglones, sigue alineado a la derecha del circulo y no se mete debajo */
+/* flex pone el circulo y el texto como dos columnas: si el texto ocupa
+   varios renglones, sigue alineado a la derecha del circulo y no se mete debajo.
+   align-items: flex-start deja el circulo arriba, a la altura del primer renglon */
+.pregunta label {
+  display: flex;
+  align-items: flex-start;
+  font-size: 20px;
+  padding: 6px 0;
+}
+
+/* margin-top baja un poco el circulo para que quede a la altura de la letra */
+.pregunta input {
+  margin-top: 7px;
+  margin-right: 12px;
+}
+
+.respuesta {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0 0 0;
+}
+
+/* despues de corregir: borde verde si acerto, rojo si no */
+.correcta {
+  border-color: #3fa34d;
+}
+
+.correcta .respuesta {
+  color: #3fa34d;
+}
+
+.incorrecta {
+  border-color: #d64545;
+}
+
+.incorrecta .respuesta {
+  color: #ff6b6b;
+}
+
+.resultado {
+  display: none;
+  text-align: center;
+  background-color: #000000;
+  border: 3px solid #f5b921;
+  padding: 25px;
+  margin: 30px 0 20px 0;
+}
+
+/* Typewriter porque la version de prueba de HeadingNow no trae los numeros */
+.resultado h2 {
+  font-family: 'Typewriter', monospace;
+  color: #f5b921;
+  font-size: 70px;
+  margin: 0 0 10px 0;
+}
+
+.resultado p {
+  font-size: 22px;
+  margin: 0;
+}
+
+.trivia-botones {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.trivia-botones button {
+  font-family: 'Typewriter', monospace;
+  font-size: 22px;
+  padding: 10px 30px;
+  color: #000000;
+  background-color: #f5b921;
+  border: none;
+}
+
+.trivia-botones button:hover {
+  background-color: #ffffff;
+}
+
+/* el boton de volver a intentar arranca oculto */
+#boton-reintentar {
+  display: none;
+}
+
+/* aviso de contenido sensible que aparece al entrar a la web */
+
+.aviso {
+  width: 92%;
+  max-width: 650px;
+  max-height: 90vh;
+  padding: 30px;
+  background-color: #000000;
+  color: #ffffff;
+  border: 3px solid #555555;
+}
+
+/* fondo negro que tapa la pagina hasta que se acepta */
+.aviso::backdrop {
+  background-color: #000000;
+}
+
+.aviso h2 {
+  font-family: 'Typewriter', monospace;
+  color: #f5b921;
+  font-size: 34px;
+  margin: 0 0 15px 0;
+}
+
+.aviso p,
+.aviso li {
+  font-size: 20px;
+}
+
+.aviso-pregunta {
+  font-weight: bold;
+  margin: 20px 0 15px 0;
+}
+
+.aviso-botones button {
+  font-family: 'Typewriter', monospace;
+  font-size: 20px;
+  padding: 8px 20px;
+  margin-right: 10px;
+  color: #ffffff;
+  background-color: #333333;
+  border: none;
+}
+
+#aviso-si {
+  color: #000000;
+  background-color: #f5b921;
+}
+
+.aviso-salida {
+  display: none;
+  margin: 15px 0 0 0;
+  color: #bbbbbb;
+}
+
+/* celular y tablet: textos mas chicos para que entren en la pantalla */
+
+@media (max-width: 991px) {
+  .aviso {
+    padding: 20px;
+  }
+
+  .aviso h2 {
+    font-size: 26px;
+  }
+
+  .aviso p,
+  .aviso li {
+    font-size: 17px;
+  }
+
+  .navbar-brand {
+    font-size: 56px;
+  }
+
+  header {
+    padding: 8px 10px;
+  }
+
+  .sinopsis p {
+    font-size: 18px;
+    margin: 10px 15px;
+  }
+
+  .texto p {
+    font-size: 20px;
+  }
+
+  .elenco h2,
+  .trailer h2,
+  .banda-sonora h2,
+  .rating h2,
+  .sinopsis h2 {
+    font-size: 32px;
+  }
+
+  .persona p {
+    font-size: 18px;
+  }
+
+  /* en celular la lista de temas es mas baja, asi entra en la pantalla */
+  .lista-temas {
+    max-height: 400px;
+  }
+  .actores .persona p {
+    min-height: 70px;
+  }
+
+  .ficha {
+    left: 3%;
+    width: 94%;
+  }
+
+  /* en celular: 40px arriba y abajo del texto (10px + 30px del ultimo parrafo) */
+  .rating {
+    padding-bottom: 10px;
+  }
+
+  .rating h2 {
+    margin-bottom: 40px;
+  }
+
+  .rating p,
+  .intro p,
+  .sobre-mi p {
+    font-size: 18px;
+  }
+
+  .bloque h2 {
+    font-size: 26px;
+  }
+
+  .trivia h1 {
+    font-size: 40px;
+  }
+
+  .pregunta h3 {
+    font-size: 20px;
+  }
+
+  .pregunta label,
+  .trivia-intro {
+    font-size: 17px;
+  }
+
+  .sobre-mi h1,
+  .contacto h2 {
+    font-size: 32px;
+  }
+
+  /* en celular menos espacio a los costados, asi el texto no queda tan angosto */
+  .sobre-mi .relleno {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .portada h1,
+  .cabecera h1 {
+    margin-top: 10px;
+  }
+}

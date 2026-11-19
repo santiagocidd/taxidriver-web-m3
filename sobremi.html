@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taxi Driver - Sobre mi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+
+<body>
+
+  <script src="aviso.js"></script>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Taxi Driver</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="elenco.html">Elenco</a></li>
+            <li class="nav-item"><a class="nav-link" href="analisis.html">Analisis</a></li>
+            <li class="nav-item"><a class="nav-link" href="galeria.html">Galeria</a></li>
+            <li class="nav-item"><a class="nav-link" href="trivia.html">Trivia</a></li>
+            <li class="nav-item"><a class="nav-link" href="sobremi.html">Sobre mi</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="sobre-mi">
+    <h1>Sobre mi</h1>
+    <!-- relleno: el espacio a los costados va en este div, asi el titulo de arriba toca los bordes -->
+    <div class="relleno">
+      <p class="presentacion">Hola, me llamo Santiago Cid, tengo 19 años y estoy estudiando la carrera de Diseño Digital en la Universidad de Palermo, esta web es un proyecto para la materia de Produccion Digital de primer año con el profesor Joaquin Molinos.</p>
+
+      <p class="presentacion">Este sitio es un homenaje sin fines de lucro a Taxi Driver (1976), hecho por fans con fines informativos y educativos.</p>
+    </div>
+
+    <!-- seccion de contacto: titulo con barra y, debajo, datos y formulario -->
+    <section class="contacto">
+      <h2>Contacto</h2>
+      <div class="relleno">
+        <!-- datos a la izquierda y formulario a la derecha; en celular se apilan -->
+        <div class="row g-4">
+          <div class="col-12 col-md-4">
+            <p>Email: Santiagocid2307@gmail.com</p>
+            <p>Instagram: <a href="https://www.instagram.com/portfolio.santiagocid/" target="_blank">@portfolio.santiagocid</a></p>
+          </div>
+
+          <div class="col-12 col-md-8">
+            <!-- formulario de muestra: no manda los datos a ningun lado.
+                 novalidate apaga la revision del navegador, asi la hace nuestra funcion de JavaScript.
+                 "return validarFormulario()" frena el envio cuando la funcion devuelve false -->
+            <form class="formulario" onsubmit="return validarFormulario()" novalidate>
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" placeholder="Tu nombre">
+
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="tu@email.com">
+
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" rows="5" placeholder="Escribi tu mensaje"></textarea>
+
+              <button type="submit">Enviar</button>
+
+              <!-- carteles ocultos: uno para los errores y otro para cuando sale bien -->
+              <p class="aviso-form" id="error-form"></p>
+              <p class="aviso-form" id="gracias">¡Gracias por contactarnos! Te vamos a responder pronto.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Taxi Driver, sus personajes e imagenes pertenecen a sus respectivos autores y titulares de derechos. Este sitio no tiene vinculo oficial con ellos. Si sos titular y queres que retiremos algun material, escribinos a Santiagocid2307@gmail.com</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // revisa los campos antes de "enviar". Devuelve false para que la pagina no se recargue
+    function validarFormulario() {
+      // .value es lo que escribio el usuario; .trim() le saca los espacios del principio y del final
+      const nombre = document.getElementById("nombre").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const mensaje = document.getElementById("mensaje").value.trim();
+
+      const error = document.getElementById("error-form");
+      const gracias = document.getElementById("gracias");
+
+      // si algun campo esta vacio, muestra el error y no sigue
+      if (nombre == "" || email == "" || mensaje == "") {
+        error.innerText = "Completa todos los campos antes de enviar.";
+        error.style.display = "block";
+        gracias.style.display = "none";
+        return false;
+      }
+
+      // un mail tiene que tener @ y un punto
+      if (!email.includes("@") || !email.includes(".")) {
+        error.innerText = "Escribi un email valido, por ejemplo: nombre@gmail.com";
+        error.style.display = "block";
+        gracias.style.display = "none";
+        return false;
+      }
+
+      // todo bien: oculta el error, muestra el cartel de gracias y vacia los campos
+      error.style.display = "none";
+      gracias.style.display = "block";
+      document.querySelector(".formulario").reset();
+      return false;
+    }
+  </script>
+
+</body>
+</html>

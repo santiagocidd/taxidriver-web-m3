@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taxi Driver - Inicio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+
+<body>
+
+  <script src="aviso.js"></script>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Taxi Driver</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="elenco.html">Elenco</a></li>
+            <li class="nav-item"><a class="nav-link" href="analisis.html">Analisis</a></li>
+            <li class="nav-item"><a class="nav-link" href="galeria.html">Galeria</a></li>
+            <li class="nav-item"><a class="nav-link" href="trivia.html">Trivia</a></li>
+            <li class="nav-item"><a class="nav-link" href="sobremi.html">Sobre mi</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="portada">
+    <h1>TAXI DRIVER</h1>
+    <div class="marco-inicio">
+      <img class="imagen-inicio" src="img/portada.jpg" alt="Imagen de portada de Taxi Driver">
+    </div>
+  </section>
+
+  <section class="sinopsis">
+    <h2>Introduccion</h2>
+    <!-- relleno: el espacio a los costados va en este div, asi el titulo de arriba toca los bordes -->
+    <div class="relleno">
+      <div class="row g-3 align-items-start">
+        <div class="col-12 col-md-5">
+          <img class="img-fluid" src="img/travis.png" alt="Travis Bickle">
+        </div>
+        <div class="col-12 col-md-7">
+          <p>Nueva York, mediados de los años setenta: una ciudad sucia, violenta y vencida por la noche. En ese escenario aparece Travis Bickle, un veterano de la guerra de Vietnam que sufre de insomnio cronico y no encuentra su lugar en el mundo. Para llenar las noches interminables consigue trabajo como taxista nocturno, y desde su parabrisas observa un desfile de prostitutas, delincuentes y almas perdidas que parecen confirmar su idea de que la ciudad esta podrida. Cada calle parece recordarle lo solo que esta.</p>
+          <p>Es un hombre callado, obsesivo y atrapado en su propia cabeza, que escribe en su diario lo que no se atreve a decir en voz alta, y que ve la corrupcion en cada esquina con la conviccion de que alguien tiene que limpiarla. Su rutina solitaria se altera cuando se cruza con dos mujeres muy distintas, y esos encuentros empiezan a empujarlo en una direccion que ni el mismo entiende del todo. La pelicula sigue ese descenso lento y hipnotico, donde la linea entre la lucidez y la obsesion se desdibuja de a poco.</p>
+          <p>Dirigida por Martin Scorsese con un guion de Paul Schrader, protagonizada por Robert De Niro en uno de los papeles mas iconicos de la historia del cine y ganadora de la Palma de Oro en Cannes, es un retrato inquietante de la soledad y de lo que puede ocurrir cuando alguien decide dejar de mirar y empezar a actuar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trailer">
+    <h2>Trailer</h2>
+    <div class="relleno">
+      <div class="ratio ratio-16x9">
+        <iframe src="https://www.youtube.com/embed/T5IligQP7Fo" title="Trailer oficial de Taxi Driver" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="rating">
+    <h2>Rating:</h2>
+    <!-- grilla de Bootstrap: la columna ocupa 8 de 12 en compu y justify-content-center la centra -->
+    <div class="relleno">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <p><a href="https://www.imdb.com/es-es/title/tt0075314/">IMDb</a>: 8.2/10 basado en mas de un millon de votos.</p>
+          <p><a href="https://www.rottentomatoes.com/m/taxi_driver">Rotten Tomatoes</a>: 96% de puntuacion del Tomatometer (critica profesional) y un alto nivel de aprobacion de la audiencia.</p>
+          <p><a href="https://www.metacritic.com/movie/taxi-driver-1976/">Metacritic</a>: Aclamacion universal por parte de los criticos de cine.</p>
+          <p><a href="https://www.commonsensemedia.org/movie-reviews/taxi-driver">Clasificacion MPAA</a>: Clasificacion R por violencia grafica fuerte, lenguaje persistente y desnudez breve.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="banda-sonora">
+    <h2>Soundtrack</h2>
+    <div class="relleno">
+      <!-- portada a la izquierda y lista de temas a la derecha; en celular se apilan -->
+      <div class="row g-4">
+        <div class="col-12 col-md-4">
+          <img class="img-fluid" src="img/albumcover.png" alt="Portada del disco de la banda sonora de Taxi Driver">
+          <p class="datos-album">Banda Sonora Original</p>
+        </div>
+        <div class="col-12 col-md-8">
+          <!-- un reproductor por tema. preload="none" hace que el audio se cargue recien al darle play -->
+          <ol class="lista-temas">
+            <li>
+              <p>1. Main Title (from &quot;Taxi Driver&quot;) &middot; Bernard Herrmann</p>
+              <audio src="audio/Dave%20Blume%20-%20Main%20Title%20Taxi%20Driver%20Original%20Soundtrack.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>2. Thank God for the Rain &middot; Bernard Herrmann</p>
+              <audio src="audio/Thank%20God%20for%20the%20Rain.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>3. Cleaning the Cab &middot; Bernard Herrmann</p>
+              <audio src="audio/Cleaning%20the%20Cab.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>4. I Still Can't Sleep / The Cannot Touch Her (Betsy's Theme) &middot; Bernard Herrmann, James P. Nichols</p>
+              <audio src="audio/I%20Still%20Can't%20Sleep%20The%20Cannot%20Touch%20Her%20(Betsy's%20Theme).mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>5. Phone Call / I Realize How Much She Is Like the Others / A Strange Customer / Watching Palantine On TV / You're Gonna Die In Hell / Betsy's Theme / Hitting the Girl &middot; Bernard Herrmann, James P. Nichols</p>
+              <audio src="audio/Phone%20Call%20I%20Realize%20How%20Much%20She%20Is%20Like%20the%20Others%20A%20Strange%20Customer%20Watching.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>6. The .44 Magnum Is a Monster &middot; Bernard Herrmann</p>
+              <audio src="audio/The%20.44%20Magnum%20Is%20a%20Monster.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>7. Getting Into Shape / Listen You Screwheads / Gun Play / Dear Father &amp; Mother / The Card / Soap Opera &middot; Bernard Herrmann, James P. Nichols</p>
+              <audio src="audio/Getting%20Into%20Shape%20Listen%20You%20Screwheads%20Gun%20Play%20Dear%20Father%20%26%20Mother%20The%20Card%20Soap.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>8. Sport and Iris &middot; Bernard Herrmann</p>
+              <audio src="audio/Sport%20and%20Iris.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>9. The $20 Bill / Target Practice &middot; Bernard Herrmann, James P. Nichols</p>
+              <audio src="audio/The%20%2420%20Bill%20Target%20Practice.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>10. Assassination Attempt / After the Carnage &middot; Bernard Herrmann, James P. Nichols</p>
+              <audio src="audio/Assassination%20Attempt%20After%20the%20Carnage.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>11. A Reluctant Hero / Betsy / End Credits &middot; Bernard Herrmann, James P. Nichols</p>
+              <audio src="audio/A%20Reluctant%20Hero%20Betsy%20End%20Credits.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>12. Diary of a Taxi Driver &middot; Bernard Herrmann, Robert DeNiro</p>
+              <audio src="audio/Diary%20of%20a%20Taxi%20Driver.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>13. God's Lonely Man - Album Version, With Alternate Ending &middot; Bernard Herrmann</p>
+              <audio src="audio/God's%20Lonely%20Man.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>14. Theme from Taxi Driver &middot; Bernard Herrmann, Dave Blume</p>
+              <audio src="audio/Theme%20from%20Taxi%20Driver.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>15. I Work the Whole City &middot; Bernard Herrmann, Dave Blume</p>
+              <audio src="audio/I%20Work%20the%20Whole%20City.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>16. Betsy In a White Dress &middot; Bernard Herrmann, Dave Blume</p>
+              <audio src="audio/Betsy%20In%20a%20White%20Dress.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>17. The Days Do Not End &middot; Bernard Herrmann, Dave Blume</p>
+              <audio src="audio/The%20Days%20Do%20Not%20End.mp3" controls preload="none"></audio>
+            </li>
+            <li>
+              <p>18. Theme from Taxi Driver - Reprise &middot; Bernard Herrmann, Dave Blume</p>
+              <audio src="audio/Theme%20from%20Taxi%20Driver%20(Reprise).mp3" controls preload="none"></audio>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Taxi Driver, sus personajes e imagenes pertenecen a sus respectivos autores y titulares de derechos. Este sitio no tiene vinculo oficial con ellos. Si sos titular y queres que retiremos algun material, escribinos a Santiagocid2307@gmail.com</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // reproductores de la banda sonora: cuando termina un tema arranca el siguiente,
+    // asi se puede escuchar el disco entero. Y si das play a uno, se pausan los demas
+    const temas = document.querySelectorAll(".lista-temas audio");
+
+    for (let i = 0; i < temas.length; i++) {
+      // "ended" pasa cuando el tema llega al final
+      temas[i].addEventListener("ended", function () {
+        if (i + 1 < temas.length) {
+          temas[i + 1].play();
+        }
+      });
+
+      // "play" pasa cuando un tema empieza a sonar
+      temas[i].addEventListener("play", function () {
+        for (let j = 0; j < temas.length; j++) {
+          if (j != i) {
+            temas[j].pause();
+          }
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
